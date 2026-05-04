@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Koparoma – Wypożyczalnia koparek i minikoparek</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+    body {
+      background-color: #f0f0f0;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background-color: #1a1a1a;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    header .logo span {
+      color: #e60000;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #e60000;
+    }
+
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                  url('https://images.unsplash.com/photo-1581091215277-4f5b7c31a6f7') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 6rem 2rem;
+    }
+    .hero h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+    }
+    .hero button {
+      background-color: #e60000;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.8rem;
+      font-size: 1rem;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .hero button:hover {
+      background-color: #b30000;
+    }
+
+    .features {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .features h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+    }
+    .cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .card {
+      background-color: white;
+      padding: 1.5rem 1.2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 300px;
+    }
+    .card h3 {
+      margin-bottom: 0.8rem;
+      color: #1a1a1a;
+    }
+    .card p {
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    .services {
+      background-color: #e8f4fb;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .services h2 {
+      margin-bottom: 1.5rem;
+    }
+    .services-list {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .services-list li {
+      margin: 0.5rem 0;
+    }
+
+    .prices-table {
+      width: 100%;
+      margin: 1rem auto;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .prices-table th,
+    .prices-table td {
+      border: 1px solid #ccc;
+      padding: 0.6rem 0.8rem;
+      text-align: center;
+    }
+    .prices-table th {
+      background-color: #e60000;
+      color: white;
+    }
+    .prices-table tr:nth-child(even) {
+      background-color: #f8f8f8;
+    }
+
+    .contact {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+    .contact h2 {
+      margin-bottom: 1.5rem;
+    }
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1rem;
+    }
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .contact-form button {
+      background-color: #e60000;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .contact-form button:hover {
+      background-color: #b30000;
+    }
+    .contact-info {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      background-color: #1a1a1a;
+      color: #ccc;
+      text-align: center;
+      padding: 1.5rem 2rem;
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: #ccc;
+      text-decoration: none;
+    }
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const form = document.querySelector(".contact-form");
+      const phoneInput = form.querySelector('input[type="tel"]');
+
+      phoneInput.addEventListener("blur", function () {
+        const phone = phoneInput.value.trim();
+        const phoneRegex = /^[+]?[1-9]d{1,14}$/;
+
+        if (!phoneRegex.test(phone)) {
+          alert("Wprowadź poprawny numer telefonu.");
+          phoneInput.focus();
+        }
+      });
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        alert(
+          "Zapytanie zostało wysłane! Wkrótce skontaktujemy się z Tobą telefonicznie lub e‑mailem."
+        );
+      });
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <div class="logo">KOPAROMA</div>
+    <nav>
+      <a href="#home">Strona główna</a>
+      <a href="#uslugi">Usługi</a>
+      <a href="#cennik">Cennik</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <h1>Wypożyczalnia koparek i minikoparek</h1>
+    <p>
+      Szybki, wiarygodny wynajem koparek z przedpłatą.  
+      Dostawa na plac budowy, nowoczesne maszyny i atrakcyjne ceny.
+    </p>
+    <button onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">
+      Zarezerwuj koparkę
+    </button>
+  </section>
+
+  <section class="features">
+    <h2>Dlaczego KOPAROMA?</h2>
+    <div class="cards">
+      <div class="card">
+        <h3>Nowoczesny sprzęt</h3>
+        <p>Koparki i minikoparki z nowego parku; sprawny sprzęt, częste serwisy.</p>
+      </div>
+      <div class="card">
+        <h3>Przedpłata i rezerwacja</h3>
+        <p>Bezpieczna rezerwacja terminu: zapłać z góry i zabezpiecz termin.</p>
+      </div>
+      <div class="card">
+        <h3>Dostawa na plac</h3>
+        <p>Transportujemy koparkę bezpośrednio na plac budowy, z góry umówiony.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="uslugi" class="services">
+    <h2>Oferta wynajmu</h2>
+    <ul class="services-list">
+      <li>Wynajem koparek z operatorem (np. 150–250 zł/h)</li>
+      <li>Wynajem minikoparek bez operatora (np. 120–200 zł/h)</li>
+      <li>Wynajem na godziny, doby lub tygodnie</li>
+      <li>Prace ziemne: wykopy pod fundamenty, kanalizację, podjazdy</li>
+      <li>Pomoc w dobieraniu maszyny do Twojego projektu</li>
+    </ul>
+  </section>
+
+  <section id="cennik" class="services" style="padding: 4rem 2rem;">
+    <h2>Cennik wynajmu koparek</h2>
+    <p>
+      Ceny orientacyjne. W zależności od projektu możliwa indywidualna oferta.
+    </p>
+    <table class="prices-table">
+      <tr>
+        <th>Typ koparki</th>
+        <th>Cena za godzinę</th>
+        <th>Cena za dobę</th>
+        <th>Kaucja</th>
+      </tr>
+      <tr>
+        <td>Minikoparka 1,6–2 t</td>
+        <td>120–160 zł</td>
+        <td>800–1000 zł</td>
+        <td>1000 zł</td>
+      </tr>
+      <tr>
+        <td>Koparka 8–10 t</td>
+        <td>180–220 zł</td>
+        <td>1400–1600 zł</td>
+        <td>2000 zł</td>
+      </tr>
+      <tr>
+        <td>Koparka 15–20 t</td>
+        <td>220–260 zł</td>
+        <td>1800–2200 zł</td>
+        <td>3000 zł</td>
+      </tr>
+    </table>
+  </section>
+
+  <section id="kontakt" class="contact">
+    <h2>Skontaktuj się z nami</h2>
+    <form class="contact-form">
+      <input type="text" name="Imię i nazwisko" placeholder="Imię i nazwisko" required />
+      <input type="tel" name="Telefon" placeholder="Telefon" required />
+      <input type="email" name="Email" placeholder="E‑mail" />
+      <input type="text" name="Data i godzina" placeholder="Data i godzina wynajmu" />
+      <textarea name="Wiadomość" rows="3" placeholder="Opisz zlecenie (np. typ pracy, długość wykopu)"></textarea>
+      <button type="submit">Wyślij zapytanie</button>
+    </form>
+    <p class="contact-info">
+      lub zadzwoń: <strong>500 123 456</strong> • e‑mail: kontakt@koparoma.pl
+    </p>
+  </section>
+
+  <footer>
+    <p>
+      &copy; 2026 <span>KOPAROMA</span> – Wypożyczalnia koparek i minikoparek.  
+      <a href="#cennik">Cennik</a> • <a href="#kontakt">Kontakt</a>
+    </p>
+  </footer>
+</body>
+</html>
